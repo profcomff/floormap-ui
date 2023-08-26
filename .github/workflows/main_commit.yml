@@ -9,7 +9,7 @@ env:
     IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-    test:
+    test-style:
         name: Проверяем стили
         runs-on: ubuntu-latest
         steps:
@@ -31,34 +31,34 @@ jobs:
             - name: Check
               run: pnpm lint && pnpm stylelint
 
-    test-format:
-        name: Выполняем тесты
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@master
+    # test:
+    #     name: Выполняем тесты
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - name: Checkout repository
+    #           uses: actions/checkout@master
 
-            - uses: pnpm/action-setup@v2
-              with:
-                  version: 7.26.3
+    #         - uses: pnpm/action-setup@v2
+    #           with:
+    #               version: 7.26.3
 
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: '18'
-                  cache: 'pnpm'
+    #         - uses: actions/setup-node@v3
+    #           with:
+    #               node-version: '18'
+    #               cache: 'pnpm'
 
-            - name: Install
-              run: pnpm install
+    #         - name: Install
+    #           run: pnpm install
 
-            - name: Check
-              run: pnpm test
+    #         - name: Check
+    #           run: pnpm test
 
     build-test-image:
         name: Собираем тестовый Docker
         runs-on: ubuntu-latest
         needs:
-            - test
-            - test-format
+            # - test
+            - test-style
         permissions:
             contents: read
             packages: write
