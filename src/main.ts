@@ -2,7 +2,11 @@ import { createApp } from 'vue';
 import './style.css';
 import App from './App.vue';
 import { vuetify } from './vuetify';
-import { router } from './router';
-import { pinia } from './pinia';
+import { GesturePlugin } from '@vueuse/gesture';
+import { MotionPlugin } from '@vueuse/motion';
 
-createApp(App).use(router).use(pinia).use(vuetify).mount('#app');
+const app = createApp(App);
+app.use(vuetify);
+app.use(GesturePlugin);
+app.use(MotionPlugin);
+app.mount('#app');
