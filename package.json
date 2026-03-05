@@ -14,6 +14,8 @@
 	"dependencies": {
 		"@coddicat/vue-pinch-scroll-zoom": "^4.2.3",
 		"@mdi/light-js": "^0.2.63",
+		"@vueuse/gesture": "^2.0.0",
+		"@vueuse/motion": "^3.0.3",
 		"pinia": "^2.1.6",
 		"vue": "^3.3.4",
 		"vue-router": "^4.2.4",
